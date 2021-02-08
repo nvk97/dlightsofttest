@@ -7,170 +7,18 @@
             "name": "11",
             "created_at": "2021-02-02 17:49:05",
             "updated_at": "2021-02-02 17:49:05",
-            "under_folder": [
-                {
-                    "id": 6,
-                    "parent_id": 5,
-                    "technical_acceptance_id": 11,
-                    "name": "excel",
-                    "created_at": "2021-02-02 17:49:05",
-                    "updated_at": "2021-02-02 17:49:05",
-                    "files": [
-                        {
-                            "id": 1,
-                            "folder_id": 6,
-                            "tag_id": null,
-                            "link":"https://docs.google.com/spreadsheets/d/1XX5Vwmk1CS64ukCRdvJOm3eIOBlaNLXIKGj7ci0mKOo/edit?usp=sharing",
-                            "name": "\u0418\u043c\u043f\u043e\u0440\u0442 из 6_ 15.01\u00a0\u044f 3.xlsx",
-                            "store_name": "uYidnvrEkJ5tsjlCGpXU7qcjCdNiUX.xlsx",
-                            "created_at": "2021-02-02 17:49:05",
-                            "updated_at": "2021-02-02 17:49:05"
-                        },
-                        {
-                            "id": 2,
-                            "folder_id": 6,
-                            "tag_id": null,
-                            "link":"https://docs.google.com/spreadsheets/d/1XX5Vwmk1CS64ukCRdvJOm3eIOBlaNLXIKGj7ci0mKOo/edit?usp=sharing",
-                            "name": "\u0418\u043c\u043f\u043e\u0440\u0442 из 6_ 15.01\u00a0\u044f 3.xlsx",
-                            "store_name": "uYidnvrEkJ5tsjlCGpXU7qcjCdNiUX.xlsx",
-                            "created_at": "2021-02-02 17:49:05",
-                            "updated_at": "2021-02-02 17:49:05"
-                        }
-                    ]
-                },
-                {
-                    "id": 4,
-                    "parent_id": 5,
-                    "technical_acceptance_id": 11,
-                    "name": "excel",
-                    "created_at": "2021-02-02 17:49:05",
-                    "updated_at": "2021-02-02 17:49:05",
-                    "files": [
-                        {
-                            "id": 3,
-                            "folder_id": 4,
-                            "tag_id": null,
-                            "link":"https://docs.google.com/spreadsheets/d/1XX5Vwmk1CS64ukCRdvJOm3eIOBlaNLXIKGj7ci0mKOo/edit?usp=sharing",
-                            "name": "я из 7 папки_ 15.01\u00a0\u044f 3.xlsx",
-                            "store_name": "uYidnvrEkJ5tsjlCGpXU7qcjCdNiUX.xlsx",
-                            "created_at": "2021-02-02 17:49:05",
-                            "updated_at": "2021-02-02 17:49:05"
-                        }
-                    ]
-                }
-            ],
-            "files": []
-        },
-        {
-            "id": 8,
-            "parent_id": null,
-            "technical_acceptance_id": 11,
-            "name": "13",
-            "created_at": "2021-02-02 17:49:05",
-            "updated_at": "2021-02-02 17:49:05",
-            "under_folder": [
+            "files": [
                 {
                     "id": 10,
-                    "parent_id": 8,
-                    "technical_acceptance_id": 11,
-                    "name": "excel",
+                    "folder_id": 5,
+                    "tag_id": null,
+                    "name": "файл из папки 11.xlsx",
+                    "link":"https://docs.google.com/spreadsheets/d/1XX5Vwmk1CS64ukCRdvJOm3eIOBlaNLXIKGj7ci0mKOo/edit?usp=sharing",
+                    "store_name": "uYidnvrEkJ5tsjlCGpXU7qcjCdNiUX.xlsx",
                     "created_at": "2021-02-02 17:49:05",
-                    "updated_at": "2021-02-02 17:49:05",
-                    "files": [
-                        {
-                            "id": 30,
-                            "folder_id": 7,
-                            "tag_id": null,
-                            "link":"https://docs.google.com/spreadsheets/d/1XX5Vwmk1CS64ukCRdvJOm3eIOBlaNLXIKGj7ci0mKOo/edit?usp=sharing",
-                            "name": "\u0418\u043c\u043f\u043e\u0440\u0442_ 15.01\u00a0\u044f 3.xlsx",
-                            "store_name": "uYidnvrEkJ5tsjlCGpXU7qcjCdNiUX.xlsx",
-                            "created_at": "2021-02-02 17:49:05",
-                            "updated_at": "2021-02-02 17:49:05"
-                        }
-                    ]
+                    "updated_at": "2021-02-02 17:49:05"
                 }
-            ],
-            "files": []
-        },
-        {
-            "id": 15,
-            "parent_id": null,
-            "technical_acceptance_id": 11,
-            "name": "НАЛОГИ",
-            "created_at": "2021-02-02 17:49:05",
-            "updated_at": "2021-02-02 17:49:05",
-            "under_folder": [
-                {
-                    "id": 9,
-                    "parent_id": 15,
-                    "technical_acceptance_id": 11,
-                    "name": "excel",
-                    "created_at": "2021-02-02 17:49:05",
-                    "updated_at": "2021-02-02 17:49:05",
-                    "files": [
-                        {
-                            "id": 15,
-                            "folder_id": 9,
-                            "tag_id": null,
-                            "link":"https://docs.google.com/spreadsheets/d/1XX5Vwmk1CS64ukCRdvJOm3eIOBlaNLXIKGj7ci0mKOo/edit?usp=sharing",
-                            "name": "\u0418\u043c\u043f\u043e\u0440\u0442_ 15.01\u00a0\u044f 3.xlsx",
-                            "store_name": "uYidnvrEkJ5tsjlCGpXU7qcjCdNiUX.xlsx",
-                            "created_at": "2021-02-02 17:49:05",
-                            "updated_at": "2021-02-02 17:49:05"
-                        },
-                        {
-                            "id": 19,
-                            "folder_id": 9,
-                            "tag_id": null,
-                            "link":"https://psv4.userapi.com/c848228/u418489921/docs/d16/3e6d34cda0c0/39158380-link.pdf?extra=kJXiHuVYdwDYwDcXuM0GWOvyi2VcmPujZ5-qVUJK74zsVVJloeBRNN1v3Nvp4QmaPrHA66q_P1unyI_MyFRz05ivuOnPHO60DtebmUv83ILoq3OHOAPu6t-_sVgwWZnci-wk1SKhugN3In09bdXkr654CQ",
-                            "name": "я не воровал эту книгу.pdf",
-                            "store_name": "uYidnvrEkJ5tsjlCGpXU7qcjCdNiUX.pdf",
-                            "created_at": "2021-02-02 17:49:05",
-                            "updated_at": "2021-02-02 17:49:05"
-                        }
-                    ]
-                }
-            ],
-            "files": []
-        },
-        {
-            "id": 40,
-            "parent_id": null,
-            "technical_acceptance_id": 11,
-            "name": "Контракты",
-            "created_at": "2021-02-02 17:49:05",
-            "updated_at": "2021-02-02 17:49:05",
-            "under_folder": [
-                {
-                    "id": 39,
-                    "parent_id": 40,
-                    "technical_acceptance_id": 11,
-                    "name": "excel",
-                    "created_at": "2021-02-02 17:49:05",
-                    "updated_at": "2021-02-02 17:49:05",
-                    "files": [],
-                    "under_folder": [
-                        {
-                            "id": 50,
-                            "parent_id": 39,
-                            "technical_acceptance_id": 11,
-                            "name": "НАЛОГИ",
-                            "created_at": "2021-02-02 17:49:05",
-                            "updated_at": "2021-02-02 17:49:05",
-                            "files": []
-                        },  {
-                            "id": 51,
-                            "parent_id": 39,
-                            "technical_acceptance_id": 11,
-                            "name": "НАЛОГИ",
-                            "created_at": "2021-02-02 17:49:05",
-                            "updated_at": "2021-02-02 17:49:05",
-                            "files": []
-                        }
-                    ]
-                }
-            ],
-            "files": []
+            ]
         }
     ],
     "status_code": 200

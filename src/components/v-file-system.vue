@@ -1,88 +1,51 @@
 <template>
   <div class="file-system">
-    <div class="file-system__folders">
-      <div class="title">Папка</div>
-      <Folder
-        v-for="folder in folders"
-        :key="folder.id"
-        :folder="folder"
-        :activeFolderId="activeFolderId"
-      />
-    </div>
-    <div class="file-system__files">
-      <div class="title">Файл</div>
-      <Files
-        v-for="file in activeFolderFiles"
-        :key="file.id"
-        :file="file"
-        :activeFileId="activeFileId"
-      />
-    </div>
+    <FolderSection
+      v-for="(folderSection, index) in folderSections"
+      :key="index"
+      :folders="folderSections[index]"
+      :index="index"
+      :activeFolderId="activeFolderId"
+      :activeFileId="activeFileId"
+    />
     <div class="file-system__doc-preview">
-      <Preview :activeFile="activeFile" v-if="!!activeFile"/>
+      <preview :activeFile="activeFile" v-if="!!activeFile" />
     </div>
   </div>
 </template>
 <script>
-import Folder from "@/components/v-file-system/folders"; //Импортирую дочерние компоненты и ивентБас
-import Files from "@/components/v-file-system/files";
-import Preview from "@/components/v-file-system/preview";
+import FolderSection from "@/components/v-file-system/FolderSection"; //Импортирую дочерние компоненты и ивентБас
+import preview from "@/components/v-file-system/preview";
 import eventBus from "@/eventBus.js";
 export default {
-  props: ["fetchedData"],//response с сервера
+  props: ["fetchedData"], //response с сервера
   components: {
-    Folder,
-    Files,
-    Preview,
+    FolderSection,
+    preview,
   },
   data() {
     return {
-      folders: this.fetchedData.parentsData.data, //основной объект полученный с сервера
+      folderSections: [{ folders: this.fetchedData.parentsData.data }], //основной объект полученный с сервера
       activeFolderId: 0, //Иниацилизация id активной папки  и id активных файлов
       activeFileId: 0,
+      activeFile: null,
     };
   },
-  computed: {
-    activeFolderFiles: function () {        //Рекурсивный поиск файлов в активной папке по id
-      function getActiveFolder(currentFolder, id) {
-        if (currentFolder.id == id && !!currentFolder.files.length) {
-          return currentFolder.files;
-        } else if (currentFolder.under_folder) {
-          for (let i = 0; i < currentFolder.under_folder.length; i++) {
-            var res = getActiveFolder(currentFolder.under_folder[i], id);
-            if (res) {
-              break;
-            }
-          }
-        }
-        return res || undefined;
-      }
-      var res;
-      for (let i = 0; i < this.folders.length; i++) {
-        res = getActiveFolder(this.folders[i], this.activeFolderId);
-        if (res) {
-          break;
-        }
-      }
-      return res || {};
-    },
-    activeFile: function () { //Поиск по файлам в активной папке выбранного файла по id
-      var res
-      for (let i = 0; i < this.activeFolderFiles.length; i++) {
-        if (this.activeFolderFiles[i].id == this.activeFileId) {
-           res =  this.activeFolderFiles[i];
-        }
-       
-      } 
-      return res||undefined;
-    },
-  },
+  computed: {},
   created() {
-    eventBus.$on("setActiveFolderId", (id) => { //Добавление слушателей событий из дочерних компонентов(получение id активной папки и активного файла)
-      this.activeFolderId = id;
+    eventBus.$on("getFoldersChild", (id, files, folders, index) => {
+      //Добавление слушателей событий из дочерних компонентов(получение id активной папки и активного файла)
+      if (index > this.folderSections.length - 2) {
+        this.activeFolderId = id;
+        this.folderSections.push({ folders: folders.data, files: files });
+      } else {
+        this.activeFolderId = id;
+        this.folderSections.splice(index - 1, Infinity);
+      }
     });
-    eventBus.$on("setActiveFileId", (id) => {
+    eventBus.$on("setActiveFile", (id, file) => {
       this.activeFileId = id;
+      this.activeFile = file;
     });
   },
 };
@@ -125,7 +88,7 @@ export default {
     }
   }
   &__doc-preview {
-    flex-basis: 70%;
+    flex-grow:1;
     height: 100%;
   }
 }
