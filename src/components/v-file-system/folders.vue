@@ -5,13 +5,14 @@
       <div class="folder-parent-name">{{ folderName }}</div>
     </div>
     <div class="folder-childs" v-if="subFoldersVisible">
-      <Folder v-for="folder in subFolders" :key="folder.id" :folder="folder" :activeFolderId="activeFolderId"/>
+      <Folder v-for="folder in subFolders" :key="folder.id" :folder="folder" :activeFolderId="activeFolderId"/> 
+      <!-- Рекурсивный компонент для отоброжения вложенности папок -->
     </div>
   </div>
 </template>
 
 <script>
-import folderLogo from "@/assets/svg/folder.svg";
+import folderLogo from "@/assets/svg/folder.svg";//Импорт иконки файла
 import eventBus from '@/eventBus.js'
 export default {
   props: {
@@ -36,13 +37,13 @@ export default {
     };
   },
   methods:{
-      displaySubFolders(){
+      displaySubFolders(){ //Скрытие и отображение дочерних папок
         if (this.hasChilds){
           this.subFoldersVisible =  this.subFoldersVisible?false:true
         }
       },
       setActiveFolderId(){
-        eventBus.$emit('setActiveFolderId',this.folder.id)
+        eventBus.$emit('setActiveFolderId',this.folder.id)// Отправка id активной папки
       }
 
   },

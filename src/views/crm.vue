@@ -29,7 +29,7 @@ export default {
     // fetch('http://someapi.com/files/documents?user-id=1234') Альтернативный запрос
     // .then(res => res = res.json())
     // .then(json => this.datas = json)
-    this.fetchedData.parentsData = require('@/assets/parents.json')
+    this.fetchedData.parentsData = require('@/assets/parents.json') //Решил оставить только один json
    
   }
 }

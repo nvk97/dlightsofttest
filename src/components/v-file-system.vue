@@ -24,12 +24,12 @@
   </div>
 </template>
 <script>
-import Folder from "@/components/v-file-system/folders";
+import Folder from "@/components/v-file-system/folders"; //Импортирую дочерние компоненты и ивентБас
 import Files from "@/components/v-file-system/files";
 import Preview from "@/components/v-file-system/preview";
 import eventBus from "@/eventBus.js";
 export default {
-  props: ["fetchedData"],
+  props: ["fetchedData"],//response с сервера
   components: {
     Folder,
     Files,
@@ -37,13 +37,13 @@ export default {
   },
   data() {
     return {
-      folders: this.fetchedData.parentsData.data,
-      activeFolderId: 0,
+      folders: this.fetchedData.parentsData.data, //основной объект полученный с сервера
+      activeFolderId: 0, //Иниацилизация id активной папки  и id активных файлов
       activeFileId: 0,
     };
   },
   computed: {
-    activeFolderFiles: function () {
+    activeFolderFiles: function () {        //Рекурсивный поиск файлов в активной папке по id
       function getActiveFolder(currentFolder, id) {
         if (currentFolder.id == id && !!currentFolder.files.length) {
           return currentFolder.files;
@@ -66,7 +66,7 @@ export default {
       }
       return res || {};
     },
-    activeFile: function () {
+    activeFile: function () { //Поиск по файлам в активной папке выбранного файла по id
       var res
       for (let i = 0; i < this.activeFolderFiles.length; i++) {
         if (this.activeFolderFiles[i].id == this.activeFileId) {
@@ -78,7 +78,7 @@ export default {
     },
   },
   created() {
-    eventBus.$on("setActiveFolderId", (id) => {
+    eventBus.$on("setActiveFolderId", (id) => { //Добавление слушателей событий из дочерних компонентов(получение id активной папки и активного файла)
       this.activeFolderId = id;
     });
     eventBus.$on("setActiveFileId", (id) => {

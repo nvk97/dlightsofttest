@@ -14,7 +14,7 @@ import eventBus from '@/eventBus.js'
      },
      methods:{
          setActiveFileId(){
-             eventBus.$emit('setActiveFileId',this.file.id)
+             eventBus.$emit('setActiveFileId',this.file.id) // Передача в родительский компонент id активного файла
          }
      }
  }
