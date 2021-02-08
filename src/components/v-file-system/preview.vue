@@ -1,7 +1,7 @@
 <template>
   <div class="preview">
     <div class="preview-pdf" v-if="typeOfFile == 'pdf'">
-        <iframe src="https://vk.com/doc418489921_513213568?hash=8c87a032befb7eae34&dl=f8cecf2a3ab3daba76"></iframe>
+      <embed class="doc-preview" type="application/pdf" :src="activeFile.link">
     </div>
     <div class="preview-xlsx" v-if="typeOfFile == 'xlsx'">
       <iframe class="doc-preview" :src="activeFile.link"></iframe>
@@ -18,7 +18,7 @@ export default {
       res = res[res.length-1]
       return res
     }
-  }
+  },
 }
 </script>
 

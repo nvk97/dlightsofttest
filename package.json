@@ -9,9 +9,11 @@
   },
   "dependencies": {
     "@babel/core": "^7.12.13",
+    "@pdftron/webviewer": "^7.2.0",
     "axios": "^0.21.1",
     "babel-loader": "^8.2.2",
     "vue": "^2.6.11",
+    "vue-pdf": "^4.2.0",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"
   },
