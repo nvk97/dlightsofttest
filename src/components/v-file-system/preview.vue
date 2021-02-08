@@ -37,6 +37,7 @@ export default {
 <style lang="scss" scoped>
 .preview {
   height: 100%;
+  width: 100%;
   &-pdf,&-xlsx{
     height: 100%;
   .doc-preview {
