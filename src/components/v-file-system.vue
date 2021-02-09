@@ -5,7 +5,6 @@
       :key="index"
       :folders="folderSections[index]"
       :index="index"
-      :activeFolderId="activeFolderId"
       :activeFileId="activeFileId"
     />
     <div class="file-system__doc-preview">
@@ -25,9 +24,14 @@ export default {
   },
   data() {
     return {
-      folderSections: [{ folders: this.fetchedData.parentsData.data }], //основной объект полученный с сервера
-      activeFolderId: 0, //Иниацилизация id активной папки  и id активных файлов
-      activeFileId: 0,
+      folderSections: [
+        {
+          folders: this.fetchedData.parentsData.data,
+          activeId: null,
+          name: "Папки",
+        },
+      ], //основной объект полученный с сервера
+      activeFileId: null,
       activeFile: null,
     };
   },
@@ -36,16 +40,34 @@ export default {
     eventBus.$on("getFoldersChild", (id, files, folders, index) => {
       //Добавление слушателей событий из дочерних компонентов(получение id активной папки и активного файла)
       if (index > this.folderSections.length - 2) {
-        this.activeFolderId = id;
-        this.folderSections.push({ folders: folders.data, files: files });
+        this.folderSections.push({
+          folders: folders.data,
+          files: files,
+          activeId: null,
+        });
+        this.$set(this.folderSections[index], "activeId", id);
+      } else if (this.folderSections[index].activeId == id) {
+        this.folderSections.splice(index + 1, Infinity);
+        this.$set(this.folderSections[index], "activeId", null);
       } else {
-        this.activeFolderId = id;
-        this.folderSections.splice(index - 1, Infinity);
+        this.folderSections.splice(index + 1, Infinity);
+        this.$set(this.folderSections[index], "activeId", null);
+        this.folderSections.push({
+          folders: folders.data,
+          files: files,
+          activeId: null,
+        });
+        this.$set(this.folderSections[index], "activeId", id);
       }
     });
     eventBus.$on("setActiveFile", (id, file) => {
-      this.activeFileId = id;
-      this.activeFile = file;
+      if (this.activeFileId == id) {
+        this.activeFileId = null
+        this.activeFile = null
+      } else {
+        this.activeFileId = id;
+        this.activeFile = file;
+      }
     });
   },
 };
@@ -88,7 +110,7 @@ export default {
     }
   }
   &__doc-preview {
-    flex-grow:1;
+    flex-grow: 1;
     height: 100%;
   }
 }
