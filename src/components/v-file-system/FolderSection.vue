@@ -1,7 +1,7 @@
 <template>
   <div class="file-system__folders">
     <div class="title">Папки</div>
-    <div class="folder" v-for="folder in folders.folders" :key="folder.id" @click="getFoldersChild(folder.id,folder.files)" :class="{active: activeFolderId == folder.id}">
+    <div class="folder" v-for="folder in folders.folders" :key="folder.id" @click="getFoldersChild(folder.id,folder.files)" :class="{active: folders.activeId == folder.id}">
       <folderLogo width="20px"/>
       <div class="name">{{folder.name}}</div>
     </div>
@@ -40,9 +40,7 @@ export default {
   methods: {
     getFoldersChild(id,files) {
       var folders = {}
-      if (id == 5){
-        folders = require('@/assets/child.json')
-      }
+      folders = require(`@/assets/child_from_${id}.json`)||{}
       eventBus.$emit("getFoldersChild",id,files,folders,this.index); // Отправка id активной папки
     },
     setActiveFile(id,file){
