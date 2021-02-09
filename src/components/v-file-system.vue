@@ -33,17 +33,23 @@ export default {
       ], //основной объект полученный с сервера
       activeFileId: null,
       activeFile: null,
+      activeIndex: null,
     };
   },
-  computed: {},
+  computed: {
+    sectionsCount: function () {
+      return this.folderSections.length;
+    },
+  },
   created() {
-    eventBus.$on("getFoldersChild", (id, files, folders, index) => {
+    eventBus.$on("getFoldersChild", (id, files, folders, index, name) => {
       //Добавление слушателей событий из дочерних компонентов(получение id активной папки и активного файла)
       if (index > this.folderSections.length - 2) {
         this.folderSections.push({
           folders: folders.data,
           files: files,
           activeId: null,
+          name: name,
         });
         this.$set(this.folderSections[index], "activeId", id);
       } else if (this.folderSections[index].activeId == id) {
@@ -56,18 +62,23 @@ export default {
           folders: folders.data,
           files: files,
           activeId: null,
+          name: name,
         });
         this.$set(this.folderSections[index], "activeId", id);
       }
     });
     eventBus.$on("setActiveFile", (id, file) => {
       if (this.activeFileId == id) {
-        this.activeFileId = null
-        this.activeFile = null
+        this.activeFileId = null;
+        this.activeFile = null;
       } else {
         this.activeFileId = id;
         this.activeFile = file;
       }
+    });
+    eventBus.$on("deleteActiveFile", () => {
+      this.activeFileId = null;
+      this.activeFile = null;
     });
   },
 };

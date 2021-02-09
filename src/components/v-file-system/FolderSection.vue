@@ -1,7 +1,7 @@
 <template>
   <div class="file-system__folders">
-    <div class="title">Папки</div>
-    <div class="folder" v-for="folder in folders.folders" :key="folder.id" @click="getFoldersChild(folder.id,folder.files)" :class="{active: folders.activeId == folder.id}">
+    <div class="title">{{folders.name}}</div>
+    <div class="folder" v-for="folder in folders.folders" :key="folder.id" @click="getFoldersChild(folder.id,folder.files,folder.name)" :class="{active: folders.activeId == folder.id}">
       <folderLogo width="20px"/>
       <div class="name">{{folder.name}}</div>
     </div>
@@ -32,21 +32,26 @@ export default {
     fileLogo
   },
   name: "Folder",
-  data() {
-    return {
-      
-    };
-  },
   methods: {
-    getFoldersChild(id,files) {
+    getFoldersChild(id,files,name) {
       var folders = {}
       folders = require(`@/assets/child_from_${id}.json`)||{}
-      eventBus.$emit("getFoldersChild",id,files,folders,this.index); // Отправка id активной папки
+      eventBus.$emit("getFoldersChild",id,files,folders,this.index,name); // Отправка id активной папки
     },
     setActiveFile(id,file){
       eventBus.$emit("setActiveFile",id,file)
+    },
+    deleteActiveFileFromDestroyedSection(){
+      eventBus.$emit('deleteActiveFile')
     }
   },
+  beforeDestroy(){
+    for(let file of this.folders.files){
+      if(file.id == this.activeFileId){
+        this.deleteActiveFileFromDestroyedSection()
+      }
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
